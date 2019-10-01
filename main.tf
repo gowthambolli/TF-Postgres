@@ -12,6 +12,8 @@ resource "null_resource" "db_remote_install" {
     inline = [
       "sudo yum install postgresql-server postgresql-contrib -yy",
       "sed -i 's/^local.*(md5|peer)/local all all trust/g' /var/lib/pgsql/data/pg_hba.conf",
+      # replace above line with a general implementation
+      # find / -name pg_hba.conf -print -exec sed -i 's/^local.*(md5|peer)/local all all trust/g' {} \; -quit > /dev/null
       "sudo postgresql-setup initdb",
       "sudo systemctl start postgresql",
       "sudo systemctl enable postgresql",
