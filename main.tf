@@ -7,6 +7,7 @@ resource "null_resource" "db_remote_install" {
     timeout  = "${var.timeout}"
   }
 
+  # User is assumed to be root to avoid complications with password prompts
   provisioner "remote-exec" {
     inline = [
       "sudo yum install postgresql-server postgresql-contrib -yy",
