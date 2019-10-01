@@ -1,4 +1,3 @@
-
 resource "null_resource" "db_remote_install" {
   connection {
     type     = "ssh"
